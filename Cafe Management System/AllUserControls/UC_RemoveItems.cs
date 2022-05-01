@@ -48,5 +48,10 @@ namespace Cafe_Management_System.AllUserControls
                 loadData();
             }
         }
+
+        private void UC_RemoveItems_Enter(object sender, EventArgs e)
+        {
+            loadData();
+        }
     }
 }
