@@ -59,14 +59,20 @@ namespace Cafe_Management_System.AllUserControls
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
+            if (txtItemName.Text != "" && txtCategory.Text != "" && txtPrice.Text != "0")
+            {
+                query = "update items set name='" + txtItemName.Text + "',category = '" + txtCategory.Text + "',price=" + txtPrice.Text + " where iid = " + id + "";
+                fn.setData(query);
+                loadData();
 
-            query = "update items set name='" + txtItemName.Text + "',category = '" + txtCategory.Text + "',price=" + txtPrice.Text + " where iid = " + id + "";
-            fn.setData(query);
-            loadData();
-
-            txtItemName.Clear();
-            txtCategory.Clear();
-            txtPrice.Clear();   
+                txtItemName.Clear();
+                txtCategory.Clear();
+                txtPrice.Clear();
+            }
+            else
+            {
+                MessageBox.Show("No Item Selected");
+            }
         }
     }
 }
