@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DGVPrinterHelper;
 
 namespace Cafe_Management_System.AllUserControls
 {
@@ -94,6 +95,30 @@ namespace Cafe_Management_System.AllUserControls
             String category = comboCategory.Text;
             query = "select name from items where category ='" + category + "' and name like '" + txtSearch.Text + "%'";
             showItemList(query);
+        }
+
+        private void guna2Button3_Click(object sender, EventArgs e)
+        {
+            if (txtTotal.Text != "0" && txtTotal.Text != "")
+            {
+                DGVPrinter printer = new DGVPrinter();
+                printer.Title = "Customer Bill";
+                printer.SubTitle = "Total Payable Amount: " + labelTotalAmount.Text;
+                printer.SubTitleFormatFlags = StringFormatFlags.LineLimit | StringFormatFlags.NoClip;
+                printer.PageNumbers = true;
+                printer.PageNumberInHeader = false;
+                printer.PorportionalColumns = true;
+                printer.HeaderCellAlignment = StringAlignment.Near;
+                printer.PrintDataGridView(guna2DataGridView1);
+
+                total = 0;
+                guna2DataGridView1.Rows.Clear();
+                labelTotalAmount.Text = "Rs. " + total;
+            }
+            else
+            {
+                MessageBox.Show("No Items Added");
+            }
         }
 
         private void guna2Button1_Click(object sender, EventArgs e)

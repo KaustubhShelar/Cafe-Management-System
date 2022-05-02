@@ -38,6 +38,10 @@ namespace Cafe_Management_System
                 ds.Show();
 
             }
+            else
+            {
+                MessageBox.Show("Invalid Details");
+            }
         }
 
         private void guna2GradientCircleButton1_Click(object sender, EventArgs e)

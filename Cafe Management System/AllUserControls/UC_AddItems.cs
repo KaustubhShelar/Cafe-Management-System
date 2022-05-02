@@ -42,9 +42,17 @@ namespace Cafe_Management_System.AllUserControls
 
         private void btnAddItem_Click(object sender, EventArgs e)
         {
-            query = "insert into items (name,category,price) values ('"+txtItemName.Text + "','"+txtCategory.Text + "',"+txtPrice.Text+")";
-            fn.setData(query);
-            clearAll();
+            if (txtItemName.Text != "" && txtCategory.Text != "" && txtPrice.Text != "0")
+            {
+
+                query = "insert into items (name,category,price) values ('" + txtItemName.Text + "','" + txtCategory.Text + "'," + txtPrice.Text + ")";
+                fn.setData(query);
+                clearAll();
+            }
+            else
+            {
+                MessageBox.Show("No Details Added");
+            }
 
         }
         public void clearAll()
